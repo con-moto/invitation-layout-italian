@@ -1023,7 +1023,7 @@ body {
   transform: translateY(0);
 }
 
-/* 1 - снизу вверх, 2 - справа, 3 - слева, 4 - снизу */
+/* 1 - снизу вверх, 2 - справа, 3 - слева, 4 - снизу, 5 - сверху */
 .section--timing-custom .timing-item:nth-child(1) {
   transform: translateY(50px);
 }
@@ -1052,18 +1052,29 @@ body {
   transform: translateY(0);
 }
 
+/* новый 5-й: сверху вниз */
+.section--timing-custom .timing-item:nth-child(5) {
+  transform: translateY(-50px);
+}
+.section--timing-custom.is-visible .timing-item:nth-child(5) {
+  transform: translateY(0);
+}
+
 /* ступенчатость по времени */
 .section--timing-custom.is-visible .timing-item:nth-child(1) {
-  transition-delay: 0.1s;
+  transition-delay: 0.2s;
 }
 .section--timing-custom.is-visible .timing-item:nth-child(2) {
-  transition-delay: 0.25s;
+  transition-delay: 0.35s;
 }
 .section--timing-custom.is-visible .timing-item:nth-child(3) {
-  transition-delay: 0.4s;
+  transition-delay: 0.5s;
 }
 .section--timing-custom.is-visible .timing-item:nth-child(4) {
-  transition-delay: 0.55s;
+  transition-delay: 0.65s;
+}
+.section--timing-custom.is-visible .timing-item:nth-child(5) {
+  transition-delay: 0.8s;
 }
 
 
@@ -1076,10 +1087,13 @@ body {
 }
 
 
-.timing-icon--rings  { background-image: url("./images/1.png"); }
-.timing-icon--dinner { background-image: url("./images/2.png"); }
-.timing-icon--cake   { background-image: url("./images/3.png"); }
-.timing-icon--party  { background-image: url("./images/4.png"); }
+.timing-icon--rings   { background-image: url("./images/1.png"); } /* венчание */
+.timing-icon--welcome { background-image: url("./images/2.png"); 
+opacity: 0.7;
+} /* welcome / aperitivo */
+.timing-icon--dinner  { background-image: url("./images/3.png"); } /* обед */
+.timing-icon--cake    { background-image: url("./images/4.png"); } /* торт */
+.timing-icon--party   { background-image: url("./images/5.png"); } /* disco & party */
 
 
 .timing-caption {

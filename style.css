@@ -359,6 +359,7 @@ body {
   position: relative;
   background-color: var(--bg-main);
   padding: 90px 20px;
+  text-align: center;
 }
 
 .intro-text-inner {
@@ -382,8 +383,9 @@ body {
 }
 
 .intro-main-text {
-  max-width: 100%;
+  max-width: 80%;
   margin: 0 auto 24px;
+  text-align: center;
 }
 
 /* ЕДИНЫЙ БАЗОВЫЙ ТЕКСТ ДЛЯ INTRO / WISHES / HOTELS / COUNTDOWN */
@@ -1817,8 +1819,9 @@ body {
 }
 
 /* ===========================
-   INTRO TEXT + ФОТО MEDIA
+   INTRO TEXT + ФОТО
    =========================== */
+
 
 @media (max-width: 930px) {
   .intro-text-block {
@@ -1830,19 +1833,17 @@ body {
   }
 }
 
-@media (max-width: 650px) {
-  .intro-text-inner {
-    max-width: 85%;
-  }
-}
 
 @media (max-width: 650px) {
-  .intro-text-block {
-    padding: 50px 20px;
-  }
 
   .intro-main-photo {
     max-width: 100%;
+  }
+
+  .intro-main-text {
+    max-width: 90%;
+    width: 90%;
+    text-align: center;
   }
 
   .intro-reply-btn {

@@ -49,6 +49,7 @@ body {
   transition: all 0.3s ease;
 }
 
+/* ===== INTRO-SCREEN ===== */
 
 .intro-screen {
   position: fixed;
@@ -81,9 +82,7 @@ body {
   background: var(--overlay-light);
 }
 
-
 /* конверт */
-
 
 .intro-envelope {
   position: relative;
@@ -91,15 +90,12 @@ body {
   transform: translateX(40px) translateY(100px);
 }
 
-
 .intro-envelope-img {
   display: block;
   width: 100%;
 }
 
-
 /* передняя часть конверта поверх всего */
-
 
 .intro-envelope-front {
   position: absolute;
@@ -111,9 +107,7 @@ body {
   pointer-events: none;
 }
 
-
 /* карточка */
-
 
 .intro-card {
   position: absolute;
@@ -127,23 +121,18 @@ body {
   pointer-events: none;
 }
 
-
 .intro-card-img {
   display: block;
   width: 100%;
 }
 
-
 /* выезд вверх: видно верхнюю половину */
-
 
 .intro-screen.card-out .intro-card {
   transform: translateY(20%);
 }
 
-
 /* подсказка */
-
 
 .intro-tap-hint {
   position: absolute;
@@ -157,14 +146,12 @@ body {
   z-index: 4;
 }
 
-
 .intro-tap-text {
   white-space: nowrap;
   font-family: 'Gilroy', sans-serif;
   font-size: 20px;
   color: #ffffff;
 }
-
 
 .intro-hand-icon {
   width: 50px;
@@ -176,33 +163,26 @@ body {
   border: none;
 }
 
-
 /* скрытие подсказки и экрана */
-
 
 .intro-screen.hide-hint .intro-tap-hint {
   opacity: 0;
   pointer-events: none;
 }
 
-
 .intro-screen.is-hidden {
   opacity: 0;
   pointer-events: none;
 }
 
-
 /* ===== ОСНОВНОЙ САЙТ ===== */
-
 
 .page {
   min-height: 100vh;
   overflow: hidden;
 }
 
-
 /* ===== HERO ===== */
-
 
 .hero {
   background: url("./images/cover-background.avif") center/cover no-repeat;
@@ -210,13 +190,11 @@ body {
   max-block-size: 100vh;
 }
 
-
 .hero-inner {
   max-width: 70%;
   margin: 0 auto;
   text-align: center;
 }
-
 
 .hero-title-top {
   margin: 0 0 7vh;
@@ -226,7 +204,6 @@ body {
   font-weight: 400;
 }
 
-
 .hero-row {
   display: grid;
   grid-template-columns: 1.2fr auto 1.2fr;
@@ -235,7 +212,6 @@ body {
   margin-bottom: 4vh;
 }
 
-
 .hero-photo {
   position: relative;
   box-shadow: 0 1.6vh 4vh rgba(0, 0, 0, 0.2);
@@ -243,16 +219,13 @@ body {
   margin: 0 auto;
 }
 
-
 .hero-photo-left {
   transform: rotate(-11deg) translateY(-12%);
 }
 
-
 .hero-photo-right {
   transform: rotate(11deg) translateY(8%);
 }
-
 
 .hero-photo img {
   display: block;
@@ -261,11 +234,9 @@ body {
   height: auto;
 }
 
-
 .hero-photo-caption {
   display: none;
 }
-
 
 .hero-date {
   display: flex;
@@ -276,7 +247,6 @@ body {
   letter-spacing: 0.24em;
 }
 
-
 .hero-names {
   margin: 0;
   margin-top: 8vh;
@@ -286,12 +256,10 @@ body {
   letter-spacing: 0.35em;
 }
 
-
 .hero-amp {
   font-family: 'Bodera', cursive;
   font-weight: 400;
 }
-
 
 .hero-decor-line img {
   display: block;
@@ -300,7 +268,6 @@ body {
   width: 100%;
 }
 
-
 /* HERO reveal initial */
 .hero {
   opacity: 0;
@@ -308,44 +275,36 @@ body {
   transition: opacity 1.2s ease-out, transform 1.2s ease-out;
 }
 
-
 .hero-inner > * {
   opacity: 0;
 }
-
 
 .hero-title-top {
   transform: translateY(-50px);
 }
 
-
 .hero-photo-left {
   transform: rotate(-11deg) translate(-60%, -20%);
 }
 
-
 .hero-photo-right {
   transform: rotate(11deg) translate(60%, 16%);
 }
-
 
 .hero-date span:nth-child(1) {
   transform: translate(-60px, -60px);
   opacity: 0;
 }
 
-
 .hero-date span:nth-child(2) {
   transform: translate(60px, -60px);
   opacity: 0;
 }
 
-
 .hero-date span:nth-child(3) {
   transform: translate(60px, 60px);
   opacity: 0;
 }
-
 
 .hero-names {
   transform: translateY(60px);
@@ -353,17 +312,14 @@ body {
 
 /* when visible */
 
-
 .hero.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-
 .hero.is-visible .hero-inner > * {
   opacity: 1;
 }
-
 
 .hero.is-visible .hero-title-top,
 .hero.is-visible .hero-photo-left,
@@ -373,16 +329,13 @@ body {
   transition: transform 1.5s ease-out, opacity 1.5s ease-out;
 }
 
-
 .hero.is-visible .hero-photo-left {
   transform: rotate(-11deg) translateY(-12%);
 }
 
-
 .hero.is-visible .hero-photo-right {
   transform: rotate(11deg) translateY(8%);
 }
-
 
 .hero.is-visible .hero-date span:nth-child(1),
 .hero.is-visible .hero-date span:nth-child(2),
@@ -392,16 +345,15 @@ body {
   transition: transform 1.5s ease-out, opacity 1.2s ease-out;
 }
 
-
 .hero.is-visible .hero-date span:nth-child(2) {
   transition-delay: 0.15s;
 }
-
 
 .hero.is-visible .hero-date span:nth-child(3) {
   transition-delay: 0.3s;
 }
 
+/* ===== INTRO TEXT BLOCK ===== */
 
 .intro-text-block {
   position: relative;
@@ -432,15 +384,26 @@ body {
 .intro-main-text {
   max-width: 100%;
   margin: 0 auto 24px;
+}
+
+/* ЕДИНЫЙ БАЗОВЫЙ ТЕКСТ ДЛЯ INTRO / WISHES / HOTELS / COUNTDOWN */
+.section-text-main {
   font-family: 'Gilroy', system-ui, sans-serif;
   font-weight: 400;
-  font-size: clamp(1.2rem, 1.3vw, 1.45rem);
+  font-size: 18px;
   line-height: 1.8;
   letter-spacing: 0.14em;
 }
 
+@media (max-width: 520px) {
+  .section-text-main {
+    font-size: 16px;
+    line-height: 1.7;
+    letter-spacing: 0.12em;
+  }
+}
+
 .intro-reply-btn {
-  /* добавь класс btn-base в HTML, чтобы было совсем DRY */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -464,7 +427,6 @@ body {
   transform: translateY(-2px);
 }
 
-
 .intro-text-block .intro-reply-btn {
   transform: translateY(60px);
   opacity: 0;
@@ -477,9 +439,7 @@ body {
   opacity: 1;
 }
 
-
 /* ===== ФОТО-БЛОК С ПСЕВДОЭЛЕМЕНТАМИ ===== */
-
 
 .intro-photos-row {
   position: relative;
@@ -489,7 +449,6 @@ body {
   padding: 90px 40px 0;
 }
 
-
 .intro-main-photo {
   position: relative;
   max-width: 40%;
@@ -498,7 +457,6 @@ body {
   object-fit: cover;
   margin: 0 auto;
 }
-
 
 .intro-photos-row::before,
 .intro-photos-row::after {
@@ -515,25 +473,21 @@ body {
   pointer-events: none;
 }
 
-
 .intro-photos-row::before {
   left: -8%;
   background-image: url("./images/pseudo-left.jpg");
 }
-
 
 .intro-photos-row::after {
   right: -8%;
   background-image: url("./images/pseudo-right.jpg");
 }
 
-
 .intro-text-block {
   opacity: 0;
   transform: translateY(70px);
   transition: opacity 1.8s ease-out, transform 1.8s ease-out;
 }
-
 
 .intro-text-block .intro-photos-row::before {
   transform: translate(-90%, -50%);
@@ -542,7 +496,6 @@ body {
   transition-delay: 0.35s;
 }
 
-
 .intro-text-block .intro-photos-row::after {
   transform: translate(90%, -50%);
   opacity: 0;
@@ -550,19 +503,16 @@ body {
   transition-delay: 0.45s;
 }
 
-
 .intro-text-block.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
-
 
 .intro-text-block.is-visible .intro-photos-row::before,
 .intro-text-block.is-visible .intro-photos-row::after {
   opacity: 0.95;
   transform: translateY(-50%);
 }
-
 
 .section-divider-line {
   width: 1px;
@@ -621,13 +571,12 @@ body {
   background: var(--bg-section);
 }
 
-
 /* ===== CALENDAR (IMAGE + TEXT, <=100vh) ===== */
 
 .section--calendar {
   position: relative;
   padding: 6vh 1.25rem;
-  background-color: #fffffe; /* можно var(--bg-section) */
+  background-color: #fffffe;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -669,7 +618,7 @@ body {
 /* центральная карта календаря */
 .calendar-card {
   background: #fffffe;
-  border-radius: 40px 0 40px 0; /* верхний левый и нижний правый */
+  border-radius: 40px 0 40px 0;
   padding: 3rem 2.5rem;
   display: flex;
   flex-direction: column;
@@ -692,7 +641,7 @@ body {
 .calendar-subheading {
   font-family: 'Gilroy', system-ui, sans-serif;
   font-weight: 400;
-  font-size: clamp(1.1rem, 1.4vw, 1.6rem); /* немного меньше */
+  font-size: clamp(1.1rem, 1.4vw, 1.6rem);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   margin: 0.6rem 0 0;
@@ -701,12 +650,12 @@ body {
 /* стартовые состояния для анимации */
 .calendar-heading-top {
   opacity: 0;
-  transform: translateX(-80%); /* большая амплитуда слева */
+  transform: translateX(-80%);
 }
 
 .calendar-heading-bottom {
   opacity: 0;
-  transform: translateX(80%); /* большая амплитуда справа */
+  transform: translateX(80%);
 }
 
 /* анимация появления */
@@ -760,7 +709,6 @@ body {
 
 /* ===== LOCATION ===== */
 
-
 .section--location {
   background: var(--bg-section);
   text-align: center;
@@ -770,19 +718,16 @@ body {
   transition: opacity 1.6s ease-out, transform 1.6s ease-out;
 }
 
-
 .section--location.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
-
 
 .location-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 
 .location-mistral {
   display: block;
@@ -794,21 +739,17 @@ body {
   text-transform: none;
 }
 
-
 /* фото + кружок */
-
 
 .location-photo-wrap {
   position: relative;
   width: 100%;
 }
 
-
 .location-photo {
   display: block;
   width: 100%;
 }
-
 
 .location-howto {
   position: absolute;
@@ -846,14 +787,12 @@ body {
   opacity: 1;
 }
 
-
 .location-howto::after {
   content: "";
   width: 1px;
   height: 35px;
   background: #000;
 }
-
 
 .location-howto:hover {
   transform: translate(0, -6px);
@@ -862,6 +801,7 @@ body {
   opacity: 0.96;
 }
 
+/* ===== CELEBRATION ===== */
 
 .section--celebration {
   background: var(--bg-section);
@@ -951,14 +891,12 @@ body {
 
 /* ===== TIMING ===== */
 
-
 .section--timing-custom {
   position: relative;
   padding: 150px 20px 160px;
   text-align: center;
   overflow: hidden;
 }
-
 
 .section--timing-custom::after {
   content: "";
@@ -969,7 +907,6 @@ body {
   z-index: -2;
 }
 
-
 .timing-bg {
   position: absolute;
   inset: 0;
@@ -977,7 +914,6 @@ body {
   opacity: 0.96;
   z-index: -1;
 }
-
 
 .timing-inner {
   max-width: 80%;
@@ -987,7 +923,6 @@ body {
   align-items: center;
 }
 
-
 .timing-list {
   margin-top: 30px;
   display: flex;
@@ -995,7 +930,6 @@ body {
   gap: 56px;
   align-items: center;
 }
-
 
 .timing-item {
   display: flex;
@@ -1070,7 +1004,6 @@ body {
   transition-delay: 0.8s;
 }
 
-
 .timing-icon {
   width: 96px;
   height: 96px;
@@ -1079,15 +1012,11 @@ body {
   background-position: center;
 }
 
-
-.timing-icon--rings   { background-image: url("./images/1.png"); } /* венчание */
-.timing-icon--welcome { background-image: url("./images/2.png"); 
-opacity: 0.7;
-} /* welcome / aperitivo */
-.timing-icon--dinner  { background-image: url("./images/3.png"); } /* обед */
-.timing-icon--cake    { background-image: url("./images/4.png"); } /* торт */
-.timing-icon--party   { background-image: url("./images/5.png"); } /* disco & party */
-
+.timing-icon--rings   { background-image: url("./images/1.png"); }
+.timing-icon--welcome { background-image: url("./images/2.png"); opacity: 0.7; }
+.timing-icon--dinner  { background-image: url("./images/3.png"); }
+.timing-icon--cake    { background-image: url("./images/4.png"); }
+.timing-icon--party   { background-image: url("./images/5.png"); }
 
 .timing-caption {
   margin: 0;
@@ -1099,9 +1028,7 @@ opacity: 0.7;
   text-transform: uppercase;
 }
 
-
 /* ===== COUNTDOWN ===== */
-
 
 .section--countdown {
   position: relative;
@@ -1117,12 +1044,10 @@ opacity: 0.7;
   transition: opacity 1.6s ease-out, transform 1.6s ease-out;
 }
 
-
 .section--countdown.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
-
 
 .countdown-overlay {
   position: relative;
@@ -1135,24 +1060,30 @@ opacity: 0.7;
   justify-content: center;
 }
 
-
 .countdown-inner {
   max-width: 720px;
   margin: 0 auto;
 }
 
-
 .countdown-label {
   margin: 0 0 24px;
   font-family: 'Gilroy', system-ui, serif;
   font-style: italic;
-  font-size: clamp(1.3rem, 2vw, 1.7rem);
-  letter-spacing: 0.16em;
   text-transform: none;
-  color: #000;
-  font-weight: 600;
+  color: #fff;
+
+  font-size: 18px;
+  line-height: 1.8;
+  letter-spacing: 0.14em;
 }
 
+@media (max-width: 520px) {
+  .countdown-label {
+    font-size: 16px;
+    line-height: 1.7;
+    letter-spacing: 0.12em;
+  }
+}
 
 .countdown-grid {
   display: flex;
@@ -1160,7 +1091,6 @@ opacity: 0.7;
   gap: 18px;
   flex-wrap: wrap;
 }
-
 
 .countdown-item {
   min-width: 100px;
@@ -1191,7 +1121,6 @@ opacity: 0.7;
   transition-delay: 0.45s;
 }
 
-
 .countdown-number {
   display: block;
   font-family: 'Gilroy', system-ui, sans-serif;
@@ -1199,7 +1128,6 @@ opacity: 0.7;
   letter-spacing: 0.18em;
   color: #fff;
 }
-
 
 .countdown-unit {
   display: block;
@@ -1218,17 +1146,17 @@ opacity: 0.7;
   overflow: hidden;
 }
 
-/* фон теперь через background */
+/* фон через background */
 .section--wishes {
   background: url("./images/calendar-background.jpg") center/cover no-repeat;
 }
 
-/* видео больше не используем, можно удалить, но оставим на всякий случай */
+/* видео не используем */
 .video-line__video {
   display: none;
 }
 
-/* overlay тоже не нужен */
+/* overlay не нужен */
 .video-line__overlay {
   display: none;
 }
@@ -1245,7 +1173,7 @@ opacity: 0.7;
 /* обёртка как у календарной карты */
 .wishes-card {
   background: #fffffe;
-  border-radius: 40px 0 40px 0; /* верхний левый и нижний правый */
+  border-radius: 40px 0 40px 0;
   padding: 3rem 2.5rem;
   display: flex;
   color: var(--text-main);
@@ -1285,14 +1213,11 @@ opacity: 0.7;
   text-transform: none;
 }
 
-.note-text {
+/* размеры берём из section-text-main */
+.note-text,
+.payment-text {
   color: var(--text-main);
   text-align: left;
-  font-family: 'Gilroy', system-ui, sans-serif;
-  font-weight: 400;
-  font-size: clamp(1.2rem, 1.3vw, 1.45rem); /* как intro-main-text */
-  line-height: 1.8;
-  letter-spacing: 0.14em;
   margin: 0;
 }
 
@@ -1305,12 +1230,6 @@ opacity: 0.7;
 .payment-text {
   margin: 0 0 0.3rem;
   white-space: pre-wrap;
-  font-family: 'Gilroy', system-ui, sans-serif;
-  font-weight: 400;
-  font-size: clamp(1.2rem, 1.3vw, 1.45rem); /* как intro-main-text */
-  line-height: 1.8;
-  letter-spacing: 0.14em;
-  color: var(--text-main);
 }
 
 /* кнопка payment-copy */
@@ -1348,10 +1267,7 @@ opacity: 0.7;
   transform: translateY(0);
 }
 
-/* ===========================
-   WISHES (VIDEO LINE) MEDIA
-   =========================== */
-
+/* WISHES MEDIA */
 @media (max-width: 768px) {
   .note {
     gap: 12px;
@@ -1365,13 +1281,6 @@ opacity: 0.7;
 
   .video-line__title.section-title-large {
     font-size: 6vh;
-  }
-
-  .note-text,
-  .payment-text {
-    font-size: 0.95rem;
-    line-height: 1.8;
-    letter-spacing: 0.12em;
   }
 }
 
@@ -1391,32 +1300,27 @@ opacity: 0.7;
   }
 }
 
-/* обёртка для линии и заголовка, чтобы они были по одной оси */
+/* обёртка для линии и заголовка */
 .section-header-center {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-
 .section-header-center .section-divider-line {
   margin-bottom: 26px;
 }
-
 
 .section-header-center .section-title-large {
   margin-bottom: 26px;
 }
 
-
 /* ===== HOTELS ===== */
-
 
 /* только для заголовка Hotels — лёгкий сдвиг влево */
 .section-title-large--hotels {
   transform: translateX(-2.4rem);
 }
-
 
 .section--hotels {
   background: #fffffe;
@@ -1427,12 +1331,10 @@ opacity: 0.7;
   transition: opacity 1.6s ease-out, transform 1.6s ease-out;
 }
 
-
 .section--hotels.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
-
 
 .hotels-inner {
   display: flex;
@@ -1440,12 +1342,10 @@ opacity: 0.7;
   align-items: center;
 }
 
-
 .hotels-intro {
   font-size: clamp(1.3rem, 1.6vw, 1.6rem);
   margin-bottom: 2.5rem;
 }
-
 
 .hotels-content {
   display: flex;
@@ -1454,12 +1354,10 @@ opacity: 0.7;
   align-items: center;
 }
 
-
 .hotels-text {
   max-width: 540px;
   text-align: left;
 }
-
 
 /* маркированный список */
 .hotels-list {
@@ -1468,31 +1366,37 @@ opacity: 0.7;
   list-style-type: "— ";
 }
 
-
+/* размеры здесь такие же, как у section-text-main */
 .hotels-list li {
   margin: 0 0 0.5rem;
   padding-left: 0.4em;
+  text-transform: none;
+
   font-family: 'Gilroy', system-ui, sans-serif;
   font-weight: 400;
-  font-size: clamp(1.2rem, 1.3vw, 1.45rem); /* как intro-main-text */
+  font-size: 18px;
   line-height: 1.8;
   letter-spacing: 0.14em;
 }
 
+@media (max-width: 520px) {
+  .hotels-list li {
+    font-size: 16px;
+    line-height: 1.7;
+    letter-spacing: 0.12em;
+  }
+}
 
 /* картинка + подпись под ней */
-
 
 .hotels-photo-wrap {
   width: 100%;
 }
 
-
 .hotels-photo {
   display: block;
   width: 100%;
 }
-
 
 .hotels-photo-caption {
   margin-top: 3.2rem;
@@ -1515,11 +1419,8 @@ opacity: 0.7;
   transform: translateY(0);
 }
 
-
 /* ===== GUEST FORM ===== */
 
-
-/* Чуть больше воздуха снизу у Guest Form */
 .section--guest-form {
   background: #fffffe;
   text-align: center;
@@ -1529,12 +1430,10 @@ opacity: 0.7;
   transition: opacity 1.6s ease-out, transform 1.6s ease-out;
 }
 
-
 .section--guest-form.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
-
 
 .section--guest-form .guest-form {
   opacity: 0;
@@ -1543,19 +1442,16 @@ opacity: 0.7;
   transition-delay: 0.25s;
 }
 
-
 .section--guest-form.is-visible .guest-form {
   opacity: 1;
   transform: translateY(0);
 }
-
 
 .guest-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 
 .guest-form {
   width: 100%;
@@ -1567,24 +1463,20 @@ opacity: 0.7;
   backdrop-filter: blur(6px);
 }
 
-
 .guest-row {
   display: flex;
   gap: 1.5rem;
   margin-bottom: 1.6rem;
 }
 
-
 .guest-field {
   flex: 1;
   text-align: left;
 }
 
-
 .guest-field--full {
   flex: 1 1 100%;
 }
-
 
 .guest-label {
   display: block;
@@ -1597,7 +1489,6 @@ opacity: 0.7;
   font-weight: 600;
 }
 
-
 .guest-input {
   width: 100%;
   padding: 0.75rem 0.9rem;
@@ -1609,26 +1500,22 @@ opacity: 0.7;
   text-transform: uppercase;
 }
 
-
 .guest-input:focus {
   outline: none;
   border-color: #343d23;
   box-shadow: 0 0 0 0.06rem rgba(52, 61, 35, 0.4);
 }
 
-
 .guest-textarea {
   resize: vertical;
   min-height: 5rem;
 }
-
 
 .guest-options {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-
 
 .guest-option {
   display: inline-flex;
@@ -1640,15 +1527,12 @@ opacity: 0.7;
   text-transform: uppercase;
 }
 
-
 .guest-option input {
   width: 1rem;
   height: 1rem;
 }
 
-
 /* кнопка отправки */
-
 
 .guest-submit-btn {
   display: inline-flex;
@@ -1669,7 +1553,6 @@ opacity: 0.7;
   transition: all 0.3s ease;
 }
 
-
 .guest-submit-btn:hover {
   opacity: 0.7;
   transform: translateY(-0.06rem);
@@ -1688,14 +1571,11 @@ opacity: 0.7;
   opacity: 1;
 }
 
-
 /* ===== FOOTER BAR ONLY ===== */
-
 
 .section--footer-image {
   background-color: #1c1a1a;
 }
-
 
 .footer-bar {
   height: calc(45vh / 2);
@@ -1731,18 +1611,15 @@ opacity: 0.7;
   color: #f5f5f5;
 }
 
-
 .footer-telegram-icon .design-authors__icon {
   width: 100%;
   height: 100%;
   fill: currentColor;
 }
 
-
 /* ===========================
-   HERO
+   HERO MEDIA
    =========================== */
-
 
 @media (max-width: 1024px) {
   .hero-inner {
@@ -1781,7 +1658,6 @@ opacity: 0.7;
   }
 }
 
-
 @media (max-width: 900px) {
   .hero-inner {
     max-width: 85%;
@@ -1814,7 +1690,6 @@ opacity: 0.7;
   }
 }
 
-
 @media (max-width: 768px) {
   .hero {
     padding: 3vh 2vw 6vh;
@@ -1822,7 +1697,7 @@ opacity: 0.7;
   }
 
   .hero-inner {
-    max-width: 97%;
+    max-width: 90%;
   }
 
   .hero-title-top {
@@ -1859,13 +1734,13 @@ opacity: 0.7;
     font-size: 5.2vh;
     margin-top: 5.5vh;
     letter-spacing: 0.32em;
+    padding-inline: 6vw;
   }
 
   .hero-decor-line img {
     max-width: 1.2vw;
   }
 }
-
 
 @media (max-width: 548px) {
   .hero {
@@ -1897,9 +1772,9 @@ opacity: 0.7;
     font-size: 5vh;
     margin-top: 5vh;
     letter-spacing: 0.32em;
+    padding-inline: 7vw;
   }
 }
-
 
 @media (max-width: 478px) {
   .hero {
@@ -1931,9 +1806,9 @@ opacity: 0.7;
     font-size: 4vh;
     margin-top: 3vh;
     letter-spacing: 0.32em;
+    padding-inline: 8vw;
   }
 }
-
 
 @media (max-width: 390px) {
   .hero-names {
@@ -1941,11 +1816,9 @@ opacity: 0.7;
   }
 }
 
-
 /* ===========================
-   INTRO TEXT + ФОТО
+   INTRO TEXT + ФОТО MEDIA
    =========================== */
-
 
 @media (max-width: 930px) {
   .intro-text-block {
@@ -1962,7 +1835,6 @@ opacity: 0.7;
     max-width: 85%;
   }
 }
-
 
 @media (max-width: 650px) {
   .intro-text-block {
@@ -1997,29 +1869,12 @@ opacity: 0.7;
   }
 }
 
-
-/* уменьшение текста INTRO TEXT с 520 и ниже */
-@media (max-width: 520px) {
-  .intro-main-text {
-    font-size: clamp(1.12rem, 1.1vw, 1.2rem);
-    line-height: 1.7;
-    letter-spacing: 0.12em;
-  }
-
-  .intro-small-title {
-    font-size: clamp(1rem, 1.15vw, 1.15rem);
-    padding: 14px 26px;
-    margin-bottom: 40px;
-  }
-}
-
-/* (Valpolicella...) уменьшить в 1.3 раза с 550 и ниже */
+/* уменьшение Valpolicella текста */
 @media (max-width: 550px) {
   .location-mistral {
     font-size: 1.38rem;
   }
 }
-
 
 /* адаптив круга "КАК ДОБРАТЬСЯ" */
 @media (max-width: 1100px) {
@@ -2036,7 +1891,6 @@ opacity: 0.7;
   }
 }
 
-
 @media (max-width: 600px) {
   .location-howto {
     right: 50px;
@@ -2050,7 +1904,6 @@ opacity: 0.7;
     height: 24px;
   }
 }
-
 
 @media (max-width: 525px) {
   .location-howto {
@@ -2066,7 +1919,6 @@ opacity: 0.7;
   }
 }
 
-
 @media (max-width: 420px) {
   .location-howto {
     right: 50px;
@@ -2081,12 +1933,7 @@ opacity: 0.7;
   }
 }
 
-
-/* ===========================
-   CELEBRATION — картинки
-   =========================== */
-
-
+/* CELEBRATION — картинки */
 @media (max-width: 768px) {
   .celebration-photo-desktop { display: none; }
   .celebration-photo-mobile {
@@ -2095,13 +1942,7 @@ opacity: 0.7;
   }
 }
 
-
-/* ===========================
-   TIMING / HOTELS / GUEST FORM / LOCATION
-   общие отступы и заголовки
-   =========================== */
-
-
+/* TIMING / HOTELS / GUEST FORM / LOCATION — общие отступы и заголовки */
 @media (max-width: 900px) {
   .section--location,
   .section--celebration,
@@ -2119,7 +1960,6 @@ opacity: 0.7;
     font-size: 8vh;
   }
 }
-
 
 @media (max-width: 600px) {
   .section--location,
@@ -2147,7 +1987,6 @@ opacity: 0.7;
   }
 }
 
-
 @media (max-width: 480px) {
   .section--location,
   .section--celebration,
@@ -2166,7 +2005,6 @@ opacity: 0.7;
   }
 }
 
-
 /* заголовок HOTELS без сдвига с 650 и меньше */
 @media (max-width: 650px) {
   .section-title-large--hotels {
@@ -2174,12 +2012,7 @@ opacity: 0.7;
   }
 }
 
-
-/* ===========================
-   COUNTDOWN (COUNTER)
-   =========================== */
-
-
+/* COUNTDOWN MEDIA */
 @media (max-width: 600px) {
   .section--countdown {
     height: 50vh;
@@ -2193,7 +2026,6 @@ opacity: 0.7;
     padding: 12px 14px;
   }
 }
-
 
 /* 480- и ниже — уменьшить элементы счетчика */
 @media (max-width: 480px) {
@@ -2229,12 +2061,7 @@ opacity: 0.7;
   }
 }
 
-
-/* ===========================
-   GUEST FORM MEDIA
-   =========================== */
-
-
+/* GUEST FORM MEDIA */
 @media (max-width: 768px) {
   .guest-form {
     padding: 1.75rem 1.4rem 2rem;
@@ -2249,12 +2076,7 @@ opacity: 0.7;
   }
 }
 
-
-/* ===========================
-   INTRO-SCREEN MEDIA
-   =========================== */
-
-
+/* INTRO-SCREEN MEDIA */
 @media (max-width: 1024px) {
   .intro-bg {
     background-size: cover;
@@ -2291,7 +2113,6 @@ opacity: 0.7;
     width: 42px;
   }
 }
-
 
 @media (max-width: 768px) {
   .intro-bg {
@@ -2331,7 +2152,6 @@ opacity: 0.7;
   }
 }
 
-
 @media (max-width: 480px) {
   .intro-bg {
     background-size: cover;
@@ -2370,7 +2190,6 @@ opacity: 0.7;
   }
 }
 
-
 @media (max-width: 642px) {
   .intro-bg {
     background-image: url("images/intro-background-mobile.jpg");
@@ -2378,7 +2197,6 @@ opacity: 0.7;
     background-position: center center;
   }
 }
-
 
 @media (max-width: 452px) {
   .intro-tap-hint {

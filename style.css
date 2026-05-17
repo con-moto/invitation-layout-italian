@@ -100,6 +100,8 @@ body {
 .intro-envelope-front {
   position: absolute;
   inset: 0;
+  left: 2.9%;
+  top: 1.3%;
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -242,7 +244,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1vh;
-  font-family: 'Champagne', serif;
+  font-family: 'Kudry', serif;
   font-size: 8.5vh;
   letter-spacing: 0.24em;
 }
@@ -453,7 +455,7 @@ body {
 
 .intro-main-photo {
   position: relative;
-  max-width: 40%;
+  max-width: 55%;
   height: auto;
   display: block;
   object-fit: cover;
@@ -465,8 +467,8 @@ body {
   content: "";
   position: absolute;
   top: 53%;
-  width: 12%;
-  height: 34%;
+  width: 18%;
+  height: 39%;
   transform: translateY(-50%);
   background-size: cover;
   background-position: center;
@@ -1353,6 +1355,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+  padding-inline: 3vw;
   align-items: center;
 }
 
@@ -1389,10 +1392,36 @@ body {
   }
 }
 
-/* картинка + подпись под ней */
-
-.hotels-photo-wrap {
+.hotels-photo-bg {
+  position: relative;
   width: 100%;
+}
+
+/* фон рисуем псевдо‑элементом, он может выйти за края */
+.hotels-photo-bg::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); /* центрируем относительно окна */
+  width: 100vw;                /* фон на всю ширину окна */
+
+  /* высота фона: только нижняя часть секции */
+  top: -4rem;                      /* можно немного поднять/опустить */
+  bottom: -8rem;               /* докатываем фон чуть ниже фото */
+
+  background: url("./images/hotels-back.jpg") center/cover no-repeat;
+  z-index: -1;                 /* чтобы фон был под фото и текстом */
+}
+
+/* внутренний контент, как ты настраивала */
+.hotels-photo-wrap {
+  width: 90%;
+  max-width: var(--page-width, 90%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .hotels-photo {
@@ -1400,6 +1429,7 @@ body {
   width: 100%;
 }
 
+/* подпись оставляем как есть */
 .hotels-photo-caption {
   margin-top: 3.2rem;
   font-family: 'Gilroy', system-ui, serif;
@@ -1421,6 +1451,11 @@ body {
   transform: translateY(0);
 }
 
+@media (max-width: 760px) {
+  .hotels-photo-bg::before {
+  bottom: -5.5rem;           
+}
+}
 /* ===== GUEST FORM ===== */
 
 .section--guest-form {
@@ -1744,80 +1779,6 @@ body {
   }
 }
 
-@media (max-width: 548px) {
-  .hero {
-    padding: 3vh 1vw 6vh;
-    max-block-size: none;
-  }
-
-  .hero-title-top {
-    font-size: 8vh;
-    margin-bottom: 4vh;
-  }
-
-  .hero-row {
-    margin-bottom: 3.5vh;
-  }
-
-  .hero-photo {
-    max-width: 26vw;
-    box-shadow: 0 1.2vh 3vh rgba(0, 0, 0, 0.2);
-  }
-
-  .hero-date {
-    font-size: 5vh;
-    letter-spacing: 0.22em;
-    gap: 0.4vh;
-  }
-
-  .hero-names {
-    font-size: 5vh;
-    margin-top: 5vh;
-    letter-spacing: 0.32em;
-    padding-inline: 7vw;
-  }
-}
-
-@media (max-width: 478px) {
-  .hero {
-    padding: 3vh 1vw 3vh;
-    max-block-size: none;
-  }
-
-  .hero-title-top {
-    font-size: 6vh;
-    margin-bottom: 3vh;
-  }
-
-  .hero-row {
-    margin-bottom: 3.5vh;
-  }
-
-  .hero-photo {
-    max-width: 29vw;
-    box-shadow: 0 1.2vh 3vh rgba(0, 0, 0, 0.2);
-  }
-
-  .hero-date {
-    font-size: 4vh;
-    letter-spacing: 0.22em;
-    gap: 0.4vh;
-  }
-
-  .hero-names {
-    font-size: 4vh;
-    margin-top: 3vh;
-    letter-spacing: 0.32em;
-    padding-inline: 8vw;
-  }
-}
-
-@media (max-width: 390px) {
-  .hero-names {
-    letter-spacing: 0.15em;
-  }
-}
-
 /* ===========================
    INTRO TEXT + ФОТО
    =========================== */
@@ -1855,18 +1816,18 @@ body {
   .intro-photos-row::before,
   .intro-photos-row::after {
     top: 60%;
-    width: 22%;
+    width: 28%;
     height: 41%;
     transform: translateY(-50%);
     overflow: hidden;
   }
 
   .intro-photos-row::before {
-    left: -37%;
+    left: -25%;
   }
 
   .intro-photos-row::after {
-    right: -37%;
+    right: -25%;
   }
 }
 
@@ -2090,7 +2051,7 @@ body {
   }
 
   .intro-card {
-    left: 10%;
+    left: 13%;
     right: 10%;
     top: 20%;
     transform: translateY(50%);
@@ -2127,7 +2088,7 @@ body {
   }
 
   .intro-card {
-    left: 10%;
+    left: 14%;
     right: 10%;
     top: 20%;
     transform: translateY(60%);
@@ -2138,14 +2099,14 @@ body {
   }
 
   .intro-tap-hint {
-    left: 60%;
+    left: 63%;
     bottom: -25px;
     transform: translateX(-50%) rotate(-13deg);
     gap: 6px;
   }
 
   .intro-tap-text {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .intro-hand-icon {
@@ -2165,7 +2126,7 @@ body {
   }
 
   .intro-card {
-    left: 8%;
+    left: 13%;
     right: 8%;
     top: 20%;
     transform: translateY(60%);
@@ -2183,7 +2144,7 @@ body {
   }
 
   .intro-tap-text {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .intro-hand-icon {
@@ -2216,5 +2177,309 @@ body {
 
   .footer-credit-text {
     text-align: center;
+  }
+}
+
+/* МОБИЛЬНЫЙ ГЕРОЙ КАК НА МАКЕТЕ */
+@media (max-width: 600px) {
+
+  .hero {
+    min-height: 100vh;
+    height: 100vh;
+    max-block-size: none;
+    padding: 3vh 7vw 4vh;
+    display: flex;
+    align-items: stretch;
+  }
+
+  .hero-inner {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    margin: 0;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    row-gap: 0;
+  }
+
+  /* заголовок сверху по центру */
+  .hero-title-top {
+    margin: 0 0 2vh;
+    font-size: 5.5vh;
+    letter-spacing: 0.18em;
+    text-align: center;
+  }
+
+  /* блок коллажа: дата + 2 фото */
+  .hero-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* левая и правая половины */
+    grid-template-areas:
+      "photo1 date"
+      ".  photo2";
+    align-items: start;
+    gap: 0;
+    margin: 0;
+    position: relative;
+    min-height: 52vh;
+  }
+
+  /* дата справа, немного “заходит” на высоту фото */
+  .hero-date {
+    grid-area: date;
+    justify-self: end;
+    align-self: start;
+    font-size: 8.4vh;
+    line-height: 0.9;
+    letter-spacing: 0.16em;
+    gap: 0.35vh;
+    margin-top: 2vh;
+    margin-right: 8vw;
+    text-align: right;
+    z-index: 3;
+  }
+
+  .hero-photo {
+    max-width: 110%;        /* чтобы занимать свою половину */
+    width: 110%;
+    box-shadow: 0 1.2vh 3vh rgba(0, 0, 0, 0.2);
+  }
+
+  /* первая фотография — левая верхняя половина */
+  .hero-photo-left {
+    grid-area: photo1;
+    justify-self: start;
+    align-self: start;
+    transform: rotate(-10deg);
+    margin-top: 0vh;
+    z-index: 2;
+  }
+
+  /* вторая фотография — ниже и упирается в правый край */
+  .hero-photo-right {
+    grid-area: photo2;
+    justify-self: end;
+    align-self: start;
+    transform: rotate(10deg) translateY(-3.5vh);
+    margin-top: -13vh;
+    z-index: 1;
+  }
+
+  /* имена снизу слева */
+  .hero-names {
+    margin: 0;
+    justify-self: start;
+    align-self: end;
+    font-size: 8.3vh;
+    letter-spacing: 0.14em;
+    text-align: left;
+    padding-inline: 0;
+  }
+
+  /* чтобы анимации не ломали позиционирование на мобилке */
+  .hero-inner > * {
+    opacity: 1;
+  }
+
+  .hero-title-top,
+  .hero-names {
+    transform: none;
+  }
+
+  .hero-date span:nth-child(1),
+  .hero-date span:nth-child(2),
+  .hero-date span:nth-child(3) {
+    transform: none;
+    opacity: 1;
+  }
+
+  .hero-photo-left,
+  .hero-photo-right {
+    opacity: 1;
+  }
+
+  .hero.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero.is-visible .hero-title-top,
+  .hero.is-visible .hero-names,
+  .hero.is-visible .hero-photo-left,
+  .hero.is-visible .hero-photo-right {
+    transform: none;
+  }
+
+  .hero.is-visible .hero-photo-left {
+    transform: rotate(-10deg);
+  }
+
+  .hero.is-visible .hero-photo-right {
+    transform: rotate(10deg) translateY(-3.5vh);
+  }
+
+  .hero-title-top {
+    transform: translateY(-70px);
+  }
+
+  .hero-photo-left {
+    transform: translate(-80px, -40px) rotate(-18deg);
+  }
+
+  .hero-photo-right {
+    transform: translate(80px, 40px) rotate(18deg);
+  }
+
+  .hero-date span:nth-child(1) {
+    transform: translate(-80px, -80px);
+    opacity: 0;
+  }
+
+  .hero-date span:nth-child(2) {
+    transform: translate(80px, -80px);
+    opacity: 0;
+  }
+
+  .hero-date span:nth-child(3) {
+    transform: translate(80px, 80px);
+    opacity: 0;
+  }
+
+  .hero-names {
+    transform: translateY(80px);
+  }
+
+  /* когда is-visible — возвращаем в МОБИЛЬНЫЕ позиции */
+
+  .hero.is-visible .hero-title-top {
+    transform: translateY(0);
+    transition: transform 1.8s ease-out, opacity 1.8s ease-out;
+  }
+
+  .hero.is-visible .hero-photo-left {
+    /* здесь НИЧЕГО не придумываем сами —
+       просто берём то, как ты располагаешь фото
+       в мобильном лейауте (левую) */
+    transform: rotate(-10deg);
+    transition: transform 1.8s ease-out, opacity 1.8s ease-out;
+  }
+
+  .hero.is-visible .hero-photo-right {
+    /* и правую — как в твоём mobile CSS */
+    transform: rotate(10deg) translateY(-3.5vh);
+    transition: transform 1.8s ease-out, opacity 1.8s ease-out;
+  }
+
+  .hero.is-visible .hero-date span:nth-child(1),
+  .hero.is-visible .hero-date span:nth-child(2),
+  .hero.is-visible .hero-date span:nth-child(3) {
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: transform 2s ease-out, opacity 1.6s ease-out;
+  }
+
+  .hero.is-visible .hero-date span:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+
+  .hero.is-visible .hero-date span:nth-child(2) {
+    transition-delay: 0.3s;
+  }
+
+  .hero.is-visible .hero-date span:nth-child(3) {
+    transition-delay: 0.5s;
+  }
+
+  .hero.is-visible .hero-names {
+    transform: translateY(0);
+    transition: transform 1.8s ease-out, opacity 1.8s ease-out;
+  }
+}
+
+@media (max-width: 550px) {
+
+  .hero-photo {
+    max-width: 110%;        /* чтобы занимать свою половину */
+    width: 110%;
+  }
+
+  /* вторая фотография — ниже и упирается в правый край */
+  .hero-photo-right {
+    margin-top: -5vh;
+  }
+}
+
+@media (max-width: 486px) {
+
+  .hero-photo {
+    max-width: 110%;        /* чтобы занимать свою половину */
+    width: 110%;
+  }
+
+  .hero-photo-left {
+    margin-top: 3vh;
+    margin-left: -5vw;
+  }
+
+  .hero-photo-right {
+    margin-top: -5vh;
+  }
+}
+
+@media (max-width: 450px) {
+
+  .hero-photo {
+    max-width: 114%;        /* чтобы занимать свою половину */
+    width: 114%;
+  }
+
+  .hero-photo-left {
+    margin-top: 5vh;
+  }
+
+  .hero-photo-right {
+    margin-top: -5vh;
+    margin-left: -4vw;
+  }
+}
+
+@media (max-width: 416px) {
+  .hero-date {
+    margin-top: 4vh;
+  }
+
+  .hero-photo {
+    max-width: 120%;        /* чтобы занимать свою половину */
+    width: 120%;
+  }
+
+  .hero-photo-left {
+    margin-top: 6vh;
+    margin-left: -7vw;
+  }
+
+  .hero-photo-right {
+    margin-top: -5vh;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-date {
+    margin-top: 4vh;
+  }
+
+  .hero-photo {
+    max-width: 120%;        /* чтобы занимать свою половину */
+    width: 120%;
+  }
+
+  .hero-photo-left {
+    margin-top: 6vh;
+    margin-left: -9vw;
+  }
+
+  .hero-photo-right {
+    margin-top: -5vh;
+    margin-left: -9vw;
   }
 }

@@ -76,26 +76,26 @@ document.addEventListener('DOMContentLoaded', () => {
     startPageAnimations();
   }
 
- // Управление музыкой через кнопку
-if (musicToggle && bgMusic) {
-  musicToggle.addEventListener('click', () => {
-    if (bgMusic.paused) {
-      bgMusic.volume = 1;
-      const promise = bgMusic.play();
-      if (promise && typeof promise.catch === 'function') {
-        promise.catch((err) => {
-          console.warn('Музыка заблокирована:', err);
-        });
+  // Управление музыкой через кнопку
+  if (musicToggle && bgMusic) {
+    musicToggle.addEventListener('click', () => {
+      if (bgMusic.paused) {
+        bgMusic.volume = 1;
+        const promise = bgMusic.play();
+        if (promise && typeof promise.catch === 'function') {
+          promise.catch((err) => {
+            console.warn('Музыка заблокирована:', err);
+          });
+        }
+        musicToggle.classList.add('is-playing');
+        musicToggle.querySelector('.music-text').textContent = 'Disattiva la musica';
+      } else {
+        bgMusic.pause();
+        musicToggle.classList.remove('is-playing');
+        musicToggle.querySelector('.music-text').textContent = 'Attiva la musica';
       }
-      musicToggle.classList.add('is-playing');
-      musicToggle.querySelector('.music-text').textContent = 'Disattiva la musica';
-    } else {
-      bgMusic.pause();
-      musicToggle.classList.remove('is-playing');
-      musicToggle.querySelector('.music-text').textContent = 'Attiva la musica';
-    }
-  });
-}
+    });
+  }
 
   const targetDate = new Date('2026-09-19T12:00:00+03:00').getTime();
 
@@ -147,7 +147,7 @@ if (musicToggle && bgMusic) {
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(() => {
           const prev = btn.textContent;
-          btn.textContent = 'скопировано';
+          btn.textContent = 'copiato';
           setTimeout(() => {
             btn.textContent = prev;
           }, 2000);
@@ -195,7 +195,7 @@ if (musicToggle && bgMusic) {
 
     guestForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      statusEl.textContent = 'Отправляем...';
+      statusEl.textContent = 'Invio in corso...';
 
       const formData = new FormData(guestForm);
       const payload = {
@@ -221,16 +221,16 @@ if (musicToggle && bgMusic) {
         .then((res) => res.json())
         .then((data) => {
           if (data && data.success) {
-            statusEl.textContent = data.message || 'Спасибо! Форма отправлена.';
+            statusEl.textContent = data.message || 'Grazie! Il modulo è stato inviato.';
             guestForm.reset();
           } else {
             statusEl.textContent =
-              (data && data.message) || 'Произошла ошибка при отправке. Попробуйте позже.';
+              (data && data.message) || "Si è verificato un errore durante l'invio. Riprova più tardi.";
           }
         })
         .catch((err) => {
           console.error(err);
-          statusEl.textContent = 'Произошла ошибка при отправке. Попробуйте позже.';
+          statusEl.textContent = "Si è verificato un errore durante l'invio. Riprova più tardi.";
         });
     });
   }

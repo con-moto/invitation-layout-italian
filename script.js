@@ -34,52 +34,54 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
   };
 
-  // ===== INTRO-SCREEN + MUSIC =====
-  const intro = document.querySelector('.intro-screen');
-  const introHint = document.querySelector('.intro-tap-hint');
-  const bgMusic = document.getElementById('bg-music');
+  // ===== INTRO-SCREEN + MUSIC (iPhone-friendly) =====
+const intro = document.querySelector('.intro-screen');
+const introHint = document.querySelector('.intro-tap-hint');
+const bgMusic = document.getElementById('bg-music');
 
-  if (intro) {
-    setTimeout(() => {
-      intro.classList.add('card-out');
-    }, 400);
+if (intro) {
+  // 1. Сначала показываем интро, но ВМУТИМ музыку
+  intro.classList.add('card-in');
 
-    const handleIntroClick = () => {
-      if (bgMusic) {
-        bgMusic
-          .play()
-          .catch((err) => {
-            console.warn('Музыка не смогла стартовать автоматически:', err);
-          });
+  // 2. Общая функция запуска музыки + продолжения
+  const startExperience = async () => {
+    if (bgMusic) {
+      bgMusic.muted = false;
+      bgMusic.volume = 1;
+
+      const promise = bgMusic.play();
+      if (promise && typeof promise.catch === 'function') {
+        promise.catch((err) => {
+          console.warn('Музыка заблокирована:', err);
+        });
       }
-
-      intro.classList.add('hide-hint');
-      intro.classList.add('is-hidden');
-
-      intro.addEventListener(
-        'transitionend',
-        () => {
-          intro.style.display = 'none';
-          // небольшая пауза перед стартом scroll-анимаций,
-          // чтобы успеть начать скроллить
-          setTimeout(() => {
-            startPageAnimations();
-          }, 700);
-        },
-        { once: true }
-      );
-    };
-
-    // клик по надписи/подсказке
-    if (introHint) {
-      introHint.addEventListener('click', handleIntroClick);
     }
-    // и клик по любой точке интро-экрана
-    intro.addEventListener('click', handleIntroClick);
-  } else {
-    // если интро нет — сразу запускаем анимации
-    startPageAnimations();
+
+    intro.classList.add('hide-hint');
+    intro.classList.add('is-hidden');
+
+    intro.addEventListener('transitionend', () => {
+      intro.style.display = 'none';
+      // небольшая пауза перед стартом scroll-анимаций
+      setTimeout(startPageAnimations, 700);
+    }, { once: true });
+  };
+
+  // 3. Вешаем на первый жест: touchend / click / pointerdown
+  const trigger = (e) => startExperience();
+  intro.addEventListener('touchend', trigger, { once: true });     // iPhone / mobile
+  intro.addEventListener('pointerdown', trigger, { once: true });  // Safari, современные браузеры
+  intro.addEventListener('click', trigger, { once: true });        // fallback
+
+  if (introHint) {
+    introHint.addEventListener('touchend', trigger, { once: true });
+    introHint.addEventListener('pointerdown', trigger, { once: true });
+    introHint.addEventListener('click', trigger, { once: true });
   }
+} else {
+  // если интро нет — сразу запускаем анимации без музыки
+  startPageAnimations();
+}
 
   // ===== COUNTDOWN =====
   // 19 сентября 2026, 12:00, часовой пояс +03:00

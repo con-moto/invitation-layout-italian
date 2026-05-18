@@ -15,7 +15,7 @@
   <link rel="icon" type="image/png" href="./images/favicon.png" />
 
   <link rel="stylesheet" href="fonts/font.css">
-  <link rel="stylesheet" href="style.css?v=1.0.2">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -34,7 +34,7 @@
 
       <div class="intro-tap-hint">
         <span class="intro-tap-text">
-          TOCCA LO SCHERMO PER APRIRE L'INVITO
+          Tocca lo schermo per scoprirlo
         </span>
         <span class="intro-hand-icon"></span>
       </div>
@@ -68,6 +68,11 @@
         <h2 class="hero-names">
           YULIA <span class="hero-amp">&amp;</span> FRANCESCO
         </h2>
+
+        <button class="hero-music-btn" id="music-toggle" aria-label="Включить музыку">
+          <span class="music-icon">♫</span>
+          <span class="music-text">Attiva la musica</span>
+        </button>
       </div>
     </header>
 
@@ -77,10 +82,9 @@
 
       <p class="intro-main-text section-text-main">
         È arrivato il momento in cui i nostri sogni sono diventati realtà.
-        Condividete con noi questo giorno così importante,
-        regalateci la vostra presenza e il vostro sostegno!
-        Non immaginiamo questo giorno senza di voi!<br>
-        Vi preghiamo di confermare la vostra presenza entro il 15 giugno!
+        Condividete con noi questo giorno così importante e regalateci la vostra presenza e il vostro affetto.
+        Non immaginiamo questo giornata senza di voi!<br>
+        Vi preghiamo gentilmente di confermare la vostra presenza entro il 20 giugno!
       </p>
 
       <div class="intro-text-inner">
@@ -88,7 +92,7 @@
           <img src="./images/portrait.jpg" alt="" class="intro-main-photo">
         </div>
 
-        <a href="#rsvp" class="intro-reply-btn">rispondere</a>
+        <a href="#rsvp" class="intro-reply-btn">confermare</a>
       </div>
     </section>
 
@@ -124,12 +128,12 @@
       <div class="section__inner location-inner">
         <div class="section-divider-line"></div>
 
-        <h2 class="section-title-large">Location</h2>
+        <h2 class="section-title-large">Ceremonia</h2>
 
         <p class="section-text-bebas section__paragraph--location">
           INIZIO DELLA CERIMONIA • 12:00<br>
           PIEVE DI SAN GIORGIO DI VALPOLICELLA<br>
-          <span class="location-mistral section-text-main">(Valpolicella vicino a Verona, Italia)</span>
+          <span class="location-mistral section-text-main">(San Giorgio di Valpolicella, Verona)</span>
         </p>
 
         <div class="location-photo-wrap">
@@ -153,7 +157,7 @@
       <div class="section__inner celebration-inner">
         <div class="section-divider-line"></div>
 
-        <h2 class="section-title-large">Celebration</h2>
+        <h2 class="section-title-large">Ricevimento</h2>
 
         <p class="section-text-bebas section__paragraph--celebration">
           PALAZZO MONTANARI <br>ACCOGLIENZA OSPITI - 14:30 / 15:00
@@ -196,17 +200,17 @@
         <div class="timing-list">
           <div class="timing-item">
             <div class="timing-icon timing-icon--rings"></div>
-            <p class="timing-caption">— 12:00 CERIMONIA RELIGIOSA</p>
+            <p class="timing-caption">— 12:00 CERIMONIA</p>
           </div>
 
           <div class="timing-item">
             <div class="timing-icon timing-icon--welcome"></div>
-            <p class="timing-caption">— 14:30 WELCOME / APERITIVO</p>
+            <p class="timing-caption">— 14:30 WELCOME / BANCHETTO NUZIALE</p>
           </div>
 
           <div class="timing-item">
             <div class="timing-icon timing-icon--dinner"></div>
-            <p class="timing-caption">— 16:30 PRANZO DI NOZZE</p>
+            <p class="timing-caption">— 16:30 RICEVIMENTO</p>
           </div>
 
           <div class="timing-item">
@@ -256,7 +260,7 @@
 
         <h2 class="section-title-large">Guest Form</h2>
         <p class="section-text-main">
-          Vi preghiamo di confermare la vostra presenza entro <br> 15 / 06 / 2026
+          Vi preghiamo di confermare la vostra presenza entro <br> 20 / 06 / 2026
         </p>
         <form class="guest-form">
           <div class="guest-row">
@@ -303,7 +307,7 @@
             </div>
 
             <div class="guest-field">
-              <label class="guest-label">Verrai con un bambino?</label>
+              <label class="guest-label">Bambini?</label>
               <div class="guest-options section-text-main">
                 <label class="guest-option">
                   <input type="radio" name="child" value="yes" required>
@@ -320,7 +324,7 @@
           <div class="guest-row">
             <div class="guest-field guest-field--full">
               <label class="guest-label" for="guest-allergy">
-                Hai qualche allergia alimentare?
+                Ha allergie o esigenze alimentari particolari?
               </label>
               <textarea
                 id="guest-allergy"
@@ -332,7 +336,7 @@
             </div>
           </div>
 
-          <button type="submit" class="guest-submit-btn">inviare</button>
+          <button type="submit" class="guest-submit-btn">inviare la conferma</button>
         </form>
       </div>
     </section>
@@ -346,9 +350,8 @@
             <article class="note">
               <div class="note-text section-text-main">
                 <p>
-                  La vostra presenza al nostro matrimonio è il dono più bello per noi.
-                  Se però desiderate sostenerci e aiutarci a realizzare il nostro sogno —
-                  terminare la ristrutturazione della nostra casa — qui sotto trovate i dati bancari necessari.
+                  Condividere questo giorno con voi sarà per noi il regalo più bello.
+Per chi desiderasse accompagnarci anche con un pensiero, stiamo realizzando il sogno della nostra casa e qui sotto lasciamo le coordinate dedicate.
                 </p>
 
                 <div
@@ -357,8 +360,9 @@
 Causale: Donazione regalo in occasione del matrimonio"
                 >
                   <pre class="payment-text section-text-main">
-IBAN: IT09Z0538701647000049463011 Popova Yulia
-Causale: Donazione regalo in occasione del matrimonio
+IBAN: IT77B0503459820000000001428
+Francesco Padovani
+Causale: Liberalità in occasione del matrimonio Francesco e Yulia
                   </pre>
                   <button type="button" class="payment-copy">copiare i dati</button>
                 </div>
@@ -367,7 +371,7 @@ Causale: Donazione regalo in occasione del matrimonio
 
             <article class="note">
               <p class="note-text section-text-main">
-                Saremo felici anche di qualsiasi altro regalo che desidererete farci.
+                Accoglieremo con gioia anche qualsiasi altro gesto o dono che vorrete dedicarci.
               </p>
             </article>
           </div>
@@ -384,7 +388,8 @@ Causale: Donazione regalo in occasione del matrimonio
         </div>
 
         <p class="section-text-bebas hotels-intro">
-          VI CONSIGLIAMO I SEGUENTI HOTEL NELLE VICINANZE:
+          Dove soggiornare<br>
+Per il vostro comfort, abbiamo raccolto alcuni hotel nelle vicinanze.
         </p>
 
         <div class="hotels-content">

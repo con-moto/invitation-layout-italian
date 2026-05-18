@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // ===== SCROLL REVEAL (SECTIONS) =====
   const initScrollReveal = () => {
     const revealSections = document.querySelectorAll(
       '.hero, .intro-text-block, .section--calendar, .section--location, .section--celebration, .section--countdown, .section--timing-custom, .section--guest-form, .section--hotels, .section--wishes'
@@ -19,13 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
           root: null,
-          threshold: 0.25, // примерно четверть секции в кадре
+          threshold: 0.25,
         }
       );
 
       revealSections.forEach((sec) => revealObserver.observe(sec));
     } else {
-      // fallback: если нет IntersectionObserver, просто показываем всё
       revealSections.forEach((sec) => sec.classList.add('is-visible'));
     }
   };
@@ -34,57 +32,71 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
   };
 
-  // ===== INTRO-SCREEN + MUSIC (iPhone-friendly) =====
-const intro = document.querySelector('.intro-screen');
-const introHint = document.querySelector('.intro-tap-hint');
-const bgMusic = document.getElementById('bg-music');
+  const intro = document.querySelector('.intro-screen');
+  const introHint = document.querySelector('.intro-tap-hint');
+  const bgMusic = document.getElementById('bg-music');
+  const musicToggle = document.getElementById('music-toggle');
 
-if (intro) {
-  // 1. Сначала показываем интро, но ВМУТИМ музыку
-  intro.classList.add('card-in');
+  if (intro) {
+    const startExperience = async () => {
+      if (startExperience.started) return;
+      startExperience.started = true;
 
-  // 2. Общая функция запуска музыки + продолжения
-  const startExperience = async () => {
-    if (bgMusic) {
-      bgMusic.muted = false;
-      bgMusic.volume = 1;
+      intro.classList.add('card-out');
+      intro.classList.add('hide-hint');
 
-      const promise = bgMusic.play();
-      if (promise && typeof promise.catch === 'function') {
-        promise.catch((err) => {
-          console.warn('Музыка заблокирована:', err);
-        });
+      const finishIntro = () => {
+        intro.classList.add('is-hidden');
+        setTimeout(() => {
+          intro.style.display = 'none';
+          startPageAnimations();
+        }, 600);
+      };
+
+      const card = intro.querySelector('.intro-card');
+      if (card) {
+        card.addEventListener('transitionend', finishIntro, { once: true });
+      } else {
+        setTimeout(finishIntro, 900);
       }
+    };
+
+    const trigger = () => startExperience();
+
+    intro.addEventListener('touchend', trigger, { once: true });
+    intro.addEventListener('pointerdown', trigger, { once: true });
+    intro.addEventListener('click', trigger, { once: true });
+
+    if (introHint) {
+      introHint.addEventListener('touchend', trigger, { once: true });
+      introHint.addEventListener('pointerdown', trigger, { once: true });
+      introHint.addEventListener('click', trigger, { once: true });
     }
-
-    intro.classList.add('hide-hint');
-    intro.classList.add('is-hidden');
-
-    intro.addEventListener('transitionend', () => {
-      intro.style.display = 'none';
-      // небольшая пауза перед стартом scroll-анимаций
-      setTimeout(startPageAnimations, 700);
-    }, { once: true });
-  };
-
-  // 3. Вешаем на первый жест: touchend / click / pointerdown
-  const trigger = (e) => startExperience();
-  intro.addEventListener('touchend', trigger, { once: true });     // iPhone / mobile
-  intro.addEventListener('pointerdown', trigger, { once: true });  // Safari, современные браузеры
-  intro.addEventListener('click', trigger, { once: true });        // fallback
-
-  if (introHint) {
-    introHint.addEventListener('touchend', trigger, { once: true });
-    introHint.addEventListener('pointerdown', trigger, { once: true });
-    introHint.addEventListener('click', trigger, { once: true });
+  } else {
+    startPageAnimations();
   }
-} else {
-  // если интро нет — сразу запускаем анимации без музыки
-  startPageAnimations();
-}
 
-  // ===== COUNTDOWN =====
-  // 19 сентября 2026, 12:00, часовой пояс +03:00
+  // Управление музыкой через кнопку
+  if (musicToggle && bgMusic) {
+    musicToggle.addEventListener('click', () => {
+      if (bgMusic.paused) {
+        bgMusic.volume = 1;
+        const promise = bgMusic.play();
+        if (promise && typeof promise.catch === 'function') {
+          promise.catch((err) => {
+            console.warn('Музыка заблокирована:', err);
+          });
+        }
+        musicToggle.classList.add('is-playing');
+        musicToggle.querySelector('.music-text').textContent = 'Выключить музыку';
+      } else {
+        bgMusic.pause();
+        musicToggle.classList.remove('is-playing');
+        musicToggle.querySelector('.music-text').textContent = 'Включить музыку';
+      }
+    });
+  }
+
   const targetDate = new Date('2026-09-19T12:00:00+03:00').getTime();
 
   const daysEl = document.getElementById('cd-days');
@@ -123,7 +135,6 @@ if (intro) {
     setInterval(updateCountdown, 1000);
   }
 
-  // ===== COPY PAYMENT DETAILS =====
   const paymentBlocks = document.querySelectorAll('.payment-block');
 
   paymentBlocks.forEach((block) => {
@@ -145,7 +156,6 @@ if (intro) {
     });
   });
 
-  // ===== CALENDAR TEXT ANIMATION (отдельный Observer под .section--calendar) =====
   const calendarSection = document.querySelector('.section--calendar');
 
   if (calendarSection && 'IntersectionObserver' in window) {
@@ -169,7 +179,6 @@ if (intro) {
     calendarSection.classList.add('is-visible');
   }
 
-  // ===== GUEST FORM: отправка на Vercel backend =====
   const guestForm = document.querySelector('.guest-form');
   if (guestForm) {
     let statusEl = document.querySelector('.guest-form-status');
@@ -186,7 +195,6 @@ if (intro) {
 
     guestForm.addEventListener('submit', (e) => {
       e.preventDefault();
-
       statusEl.textContent = 'Отправляем...';
 
       const formData = new FormData(guestForm);
@@ -201,8 +209,7 @@ if (intro) {
         event: 'Wedding 19.09.2026',
       };
 
-      const BACKEND_URL =
-        'https://wedding-yulia-francesco-backend.vercel.app/api/send';
+      const BACKEND_URL = 'https://wedding-yulia-francesco-backend.vercel.app/api/send';
 
       fetch(BACKEND_URL, {
         method: 'POST',
@@ -214,19 +221,16 @@ if (intro) {
         .then((res) => res.json())
         .then((data) => {
           if (data && data.success) {
-            statusEl.textContent =
-              data.message || 'Спасибо! Форма отправлена.';
+            statusEl.textContent = data.message || 'Спасибо! Форма отправлена.';
             guestForm.reset();
           } else {
             statusEl.textContent =
-              (data && data.message) ||
-              'Произошла ошибка при отправке. Попробуйте позже.';
+              (data && data.message) || 'Произошла ошибка при отправке. Попробуйте позже.';
           }
         })
         .catch((err) => {
           console.error(err);
-          statusEl.textContent =
-            'Произошла ошибка при отправке. Попробуйте позже.';
+          statusEl.textContent = 'Произошла ошибка при отправке. Попробуйте позже.';
         });
     });
   }

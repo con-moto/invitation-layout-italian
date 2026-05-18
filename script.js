@@ -76,26 +76,26 @@ document.addEventListener('DOMContentLoaded', () => {
     startPageAnimations();
   }
 
-  // Управление музыкой через кнопку
-  if (musicToggle && bgMusic) {
-    musicToggle.addEventListener('click', () => {
-      if (bgMusic.paused) {
-        bgMusic.volume = 1;
-        const promise = bgMusic.play();
-        if (promise && typeof promise.catch === 'function') {
-          promise.catch((err) => {
-            console.warn('Музыка заблокирована:', err);
-          });
-        }
-        musicToggle.classList.add('is-playing');
-        musicToggle.querySelector('.music-text').textContent = 'Выключить музыку';
-      } else {
-        bgMusic.pause();
-        musicToggle.classList.remove('is-playing');
-        musicToggle.querySelector('.music-text').textContent = 'Включить музыку';
+ // Управление музыкой через кнопку
+if (musicToggle && bgMusic) {
+  musicToggle.addEventListener('click', () => {
+    if (bgMusic.paused) {
+      bgMusic.volume = 1;
+      const promise = bgMusic.play();
+      if (promise && typeof promise.catch === 'function') {
+        promise.catch((err) => {
+          console.warn('Музыка заблокирована:', err);
+        });
       }
-    });
-  }
+      musicToggle.classList.add('is-playing');
+      musicToggle.querySelector('.music-text').textContent = 'Disattiva la musica';
+    } else {
+      bgMusic.pause();
+      musicToggle.classList.remove('is-playing');
+      musicToggle.querySelector('.music-text').textContent = 'Attiva la musica';
+    }
+  });
+}
 
   const targetDate = new Date('2026-09-19T12:00:00+03:00').getTime();
 

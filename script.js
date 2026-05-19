@@ -76,7 +76,43 @@ document.addEventListener('DOMContentLoaded', () => {
     startPageAnimations();
   }
 
-  // Управление музыкой через кнопку (iOS/macOS Safari friendly)
+  // ---------- RILASCIO AUDIO AL PRIMO GESTO ----------
+
+  const unlockAudio = () => {
+    if (!bgMusic) return;
+
+    bgMusic.muted = true;
+    const p = bgMusic.play();
+
+    if (p && typeof p.then === 'function') {
+      p.then(() => {
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+        bgMusic.muted = false;
+      }).catch(() => {
+        // Se anche il play silenzioso fallisce, non facciamo nulla
+      });
+    }
+
+    document.removeEventListener('touchend', unlockAudio);
+    document.removeEventListener('click', unlockAudio);
+    if (intro) {
+      intro.removeEventListener('touchend', unlockAudio);
+      intro.removeEventListener('click', unlockAudio);
+    }
+  };
+
+  // Primo gesto sul documento
+  document.addEventListener('touchend', unlockAudio, { once: true });
+  document.addEventListener('click', unlockAudio, { once: true });
+
+  // E anche sull'intro, che copre tutto lo schermo
+  if (intro) {
+    intro.addEventListener('touchend', unlockAudio, { once: true });
+    intro.addEventListener('click', unlockAudio, { once: true });
+  }
+
+  // ---------- CONTROLLO MUSICA TRAMITE BOTTONE ----------
 
   const setMusicUi = (isPlaying) => {
     if (!musicToggle) return;
@@ -113,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (musicToggle && bgMusic) {
     const handleToggle = () => {
       if (bgMusic.paused) {
-        tryPlayMusic(); // прямой вызов из обработчика
+        tryPlayMusic();
       } else {
         pauseMusic();
       }
@@ -123,6 +159,8 @@ document.addEventListener('DOMContentLoaded', () => {
     musicToggle.addEventListener('touchend', handleToggle, { passive: true });
     musicToggle.addEventListener('pointerdown', handleToggle);
   }
+
+  // ---------- COUNTDOWN ----------
 
   const targetDate = new Date('2026-09-19T12:00:00+03:00').getTime();
 
@@ -162,6 +200,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateCountdown, 1000);
   }
 
+  // ---------- COPIARE I DATI DI PAGAMENTO ----------
+
   const paymentBlocks = document.querySelectorAll('.payment-block');
 
   paymentBlocks.forEach((block) => {
@@ -182,6 +222,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // ---------- MOSTRARE LA SEZIONE CALENDARIO ----------
 
   const calendarSection = document.querySelector('.section--calendar');
 
@@ -205,6 +247,8 @@ document.addEventListener('DOMContentLoaded', () => {
   } else if (calendarSection) {
     calendarSection.classList.add('is-visible');
   }
+
+  // ---------- FORM OSPITI ----------
 
   const guestForm = document.querySelector('.guest-form');
   if (guestForm) {

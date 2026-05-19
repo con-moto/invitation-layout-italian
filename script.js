@@ -76,25 +76,52 @@ document.addEventListener('DOMContentLoaded', () => {
     startPageAnimations();
   }
 
-  // Управление музыкой через кнопку
+  // Управление музыкой через кнопку (iOS/macOS Safari friendly)
+
+  const setMusicUi = (isPlaying) => {
+    if (!musicToggle) return;
+    const textEl = musicToggle.querySelector('.music-text');
+    if (isPlaying) {
+      musicToggle.classList.add('is-playing');
+      if (textEl) textEl.textContent = 'Disattiva la musica';
+    } else {
+      musicToggle.classList.remove('is-playing');
+      if (textEl) textEl.textContent = 'Attiva la musica';
+    }
+  };
+
+  const tryPlayMusic = async () => {
+    if (!bgMusic) return;
+
+    bgMusic.volume = 1;
+
+    try {
+      await bgMusic.play();
+      setMusicUi(true);
+    } catch (err) {
+      console.warn('Music play blocked or failed:', err);
+      setMusicUi(false);
+    }
+  };
+
+  const pauseMusic = () => {
+    if (!bgMusic) return;
+    bgMusic.pause();
+    setMusicUi(false);
+  };
+
   if (musicToggle && bgMusic) {
-    musicToggle.addEventListener('click', () => {
+    const handleToggle = () => {
       if (bgMusic.paused) {
-        bgMusic.volume = 1;
-        const promise = bgMusic.play();
-        if (promise && typeof promise.catch === 'function') {
-          promise.catch((err) => {
-            console.warn('Музыка заблокирована:', err);
-          });
-        }
-        musicToggle.classList.add('is-playing');
-        musicToggle.querySelector('.music-text').textContent = 'Disattiva la musica';
+        tryPlayMusic(); // прямой вызов из обработчика
       } else {
-        bgMusic.pause();
-        musicToggle.classList.remove('is-playing');
-        musicToggle.querySelector('.music-text').textContent = 'Attiva la musica';
+        pauseMusic();
       }
-    });
+    };
+
+    musicToggle.addEventListener('click', handleToggle);
+    musicToggle.addEventListener('touchend', handleToggle, { passive: true });
+    musicToggle.addEventListener('pointerdown', handleToggle);
   }
 
   const targetDate = new Date('2026-09-19T12:00:00+03:00').getTime();
